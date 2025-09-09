@@ -21,7 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata = {
-  title: "STREAMERS EQUITY INDEX",
+  title: "Inside The Stream",
   description: "Minimal, immersive live video with in-stream crypto actions",
   generator: "v0.app",
 }
