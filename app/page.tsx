@@ -58,7 +58,7 @@ export default function HomePage() {
                 <div className="relative w-full max-w-4xl mx-auto aspect-video rounded-lg overflow-hidden shadow-2xl">
                   <iframe
                     id="youtube-player"
-                    src="https://www.youtube-nocookie.com/embed/5a7msMDBKDI?autoplay=1&mute=1&loop=1&playlist=5a7msMDBKDI&controls=1&modestbranding=1&rel=0&enablejsapi=1"
+                    src="https://www.youtube-nocookie.com/embed/b272rAhsRfE?autoplay=1&mute=1&loop=1&playlist=b272rAhsRfE&controls=1&modestbranding=1&rel=0&enablejsapi=1"
                     title="YouTube video player"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
