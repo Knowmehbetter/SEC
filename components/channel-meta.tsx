@@ -29,10 +29,7 @@ export default function ChannelMeta({ onShowToast }: ChannelMetaProps) {
             A clean, immersive stream with on-video actions
           </p>
 
-          <div className="flex flex-wrap gap-2 mb-4">
-            <span className="px-3 py-1 rounded-full glass text-sm font-medium">Solana</span>
-            <span className="px-3 py-1 rounded-full glass text-sm font-medium">Real-time</span>
-          </div>
+          <div className="flex flex-wrap gap-2 mb-4"></div>
 
           <button
             onClick={copyCA}
@@ -44,17 +41,15 @@ export default function ChannelMeta({ onShowToast }: ChannelMetaProps) {
           </button>
         </div>
 
-        <div className="flex flex-wrap gap-2">
-          <button className="px-4 py-2 rounded-full glass hover:bg-white/10 transition-all duration-200 hover:-translate-y-0.5 text-sm">
-            View Chart
-          </button>
-          <button className="px-4 py-2 rounded-full glass hover:bg-white/10 transition-all duration-200 hover:-translate-y-0.5 text-sm">
-            Join Telegram
-          </button>
-          <button className="px-4 py-2 rounded-full glass hover:bg-white/10 transition-all duration-200 hover:-translate-y-0.5 text-sm">
-            Docs
-          </button>
-        </div>
+        <div className="flex flex-wrap gap-2"></div>
+      </div>
+
+      <div style={{ width: "100%", maxWidth: "100%", borderRadius: "16px", overflow: "hidden", marginTop: "20px" }}>
+        <iframe
+          src="https://dexscreener.com/solana/4gjoepgiq2fuam8mp6yvge8p5pbcaevtolqeqfwjvefx?embed=1&theme=dark"
+          style={{ width: "100%", height: "600px", border: "0", borderRadius: "16px", overflow: "hidden" }}
+          allowFullScreen
+        />
       </div>
     </div>
   )
