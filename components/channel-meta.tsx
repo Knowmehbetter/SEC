@@ -58,6 +58,74 @@ export default function ChannelMeta({ onShowToast }: ChannelMetaProps) {
           border: "8px solid #222",
         }}
       >
+        <div
+          style={{
+            position: "absolute",
+            top: "20px",
+            right: "20px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            zIndex: 10,
+          }}
+        >
+          {/* X Button */}
+          <a
+            href="https://x.com"
+            target="_blank"
+            style={{
+              width: "45px",
+              height: "45px",
+              background: "#111",
+              border: "2px solid #444",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "inset 0 0 6px #000, 0 0 8px rgba(0,0,0,0.8)",
+              color: "#fff",
+              textDecoration: "none",
+              fontSize: "18px",
+              fontWeight: "bold",
+              fontFamily: "monospace",
+              transition: "all 0.2s ease",
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.background = "#222")}
+            onMouseOut={(e) => (e.currentTarget.style.background = "#111")}
+            rel="noreferrer"
+          >
+            X
+          </a>
+
+          {/* Pump.fun Button */}
+          <a
+            href="https://pump.fun"
+            target="_blank"
+            style={{
+              width: "45px",
+              height: "45px",
+              background: "#111",
+              border: "2px solid #444",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "inset 0 0 6px #000, 0 0 8px rgba(0,0,0,0.8)",
+              color: "#0f0",
+              textDecoration: "none",
+              fontSize: "12px",
+              fontWeight: "bold",
+              fontFamily: "monospace",
+              transition: "all 0.2s ease",
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.background = "#222")}
+            onMouseOut={(e) => (e.currentTarget.style.background = "#111")}
+            rel="noreferrer"
+          >
+            PF
+          </a>
+        </div>
+
         {/* TV Screen Effect */}
         <div
           style={{
@@ -74,6 +142,7 @@ export default function ChannelMeta({ onShowToast }: ChannelMetaProps) {
             allowFullScreen
           />
         </div>
+
         {/* TV Legs */}
         <div
           style={{
