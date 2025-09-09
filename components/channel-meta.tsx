@@ -44,11 +44,58 @@ export default function ChannelMeta({ onShowToast }: ChannelMetaProps) {
         <div className="flex flex-wrap gap-2"></div>
       </div>
 
-      <div style={{ width: "100%", maxWidth: "100%", borderRadius: "16px", overflow: "hidden", marginTop: "20px" }}>
-        <iframe
-          src="https://dexscreener.com/solana/4gjoepgiq2fuam8mp6yvge8p5pbcaevtolqeqfwjvefx?embed=1&theme=dark"
-          style={{ width: "100%", height: "600px", border: "0", borderRadius: "16px", overflow: "hidden" }}
-          allowFullScreen
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          maxWidth: "100%",
+          marginTop: "20px",
+          borderRadius: "20px",
+          padding: "25px",
+          background: "#000",
+          backgroundImage: "radial-gradient(circle at center, #111 0%, #000 100%)",
+          boxShadow: "0 0 40px rgba(0,0,0,0.8), inset 0 0 80px rgba(0,0,0,0.7)",
+          border: "8px solid #222",
+        }}
+      >
+        {/* TV Screen Effect */}
+        <div
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            borderRadius: "12px",
+            background: "#000",
+            boxShadow: "inset 0 0 20px rgba(0,0,0,0.9)",
+          }}
+        >
+          <iframe
+            src="https://dexscreener.com/solana/4gjoepgiq2fuam8mp6yvge8p5pbcaevtolqeqfwjvefx?embed=1&theme=dark"
+            style={{ width: "100%", height: "600px", border: "0", borderRadius: "12px" }}
+            allowFullScreen
+          />
+        </div>
+        {/* TV Legs */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-25px",
+            left: "20%",
+            width: "20%",
+            height: "20px",
+            background: "#222",
+            borderRadius: "5px",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-25px",
+            right: "20%",
+            width: "20%",
+            height: "20px",
+            background: "#222",
+            borderRadius: "5px",
+          }}
         />
       </div>
     </div>
