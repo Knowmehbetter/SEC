@@ -49,7 +49,7 @@ export default function InfoStrip() {
           <span>{viewers.toLocaleString()}</span>
         </div>
 
-        <span>Auto 1080p</span>
+        
       </div>
 
       {/* Right cluster */}

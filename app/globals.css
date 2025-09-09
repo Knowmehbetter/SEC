@@ -829,3 +829,91 @@ kbd {
   pointer-events: none;
   z-index: 0; /* keep overlays clickable */
 }
+
+/* Adding YouTube-style progress bar below heading */
+.youtube-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.youtube-bar {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.dark .youtube-bar {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.youtube-bar-buffer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+  width: 65%;
+  animation: youtube-buffer 2s ease-in-out infinite;
+}
+
+.dark .youtube-bar-buffer {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.youtube-bar-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #ff0000, #ff4444);
+  border-radius: 2px;
+  width: 35%;
+  animation: youtube-progress 3s linear infinite;
+  z-index: 1;
+}
+
+@keyframes youtube-buffer {
+  0%,
+  100% {
+    width: 65%;
+  }
+  50% {
+    width: 85%;
+  }
+}
+
+@keyframes youtube-progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.youtube-bar:hover .youtube-bar-progress {
+  background: linear-gradient(90deg, #cc0000, #ff0000);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .youtube-bar-buffer,
+  .youtube-bar-progress {
+    animation: none !important;
+  }
+  .youtube-bar-progress {
+    width: 35%;
+  }
+  .youtube-bar-buffer {
+    width: 65%;
+  }
+}

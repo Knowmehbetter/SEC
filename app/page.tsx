@@ -54,6 +54,24 @@ export default function HomePage() {
               >
                 Inside the Stream
               </h1>
+              <div className="mb-6">
+                <div className="relative w-full max-w-4xl mx-auto aspect-video rounded-lg overflow-hidden shadow-2xl">
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/5a7msMDBKDI?autoplay=1&mute=1&loop=1&playlist=5a7msMDBKDI&controls=1&modestbranding=1&rel=0"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+              </div>
+              <div className="youtube-bar-container mb-6">
+                <div className="youtube-bar">
+                  <div className="youtube-bar-progress"></div>
+                  <div className="youtube-bar-buffer"></div>
+                </div>
+              </div>
               <p
                 className="text-[var(--color-text-muted)] text-lg max-w-2xl mx-auto sub"
                 data-type
@@ -80,27 +98,7 @@ export default function HomePage() {
         </section>
 
         {/* SEX TV Chart Section */}
-        <section className="sex-tvchart" id="sex-tvchart">
-          <div className="sex-tvchart__bezel">
-            <div className="sex-tvchart__status" aria-hidden="true"></div>
-            <div className="sex-tvchart__screen">
-              <iframe
-                id="sexDexFrame"
-                title="DEX Chart"
-                loading="lazy"
-                referrerPolicy="no-referrer"
-                allow="fullscreen"
-              ></iframe>
-            </div>
-            <div className="sex-tvchart__label">
-              <span>Streaming Equity Index — Live</span>
-              <a id="sexDexOpen" target="_blank" rel="noopener">
-                Open Dexscreener ↗
-              </a>
-            </div>
-            <div className="sex-tvchart__stand" aria-hidden="true"></div>
-          </div>
-        </section>
+        <section className="sex-tvchart" id="sex-tvchart"></section>
 
         {/* Tabs Section */}
         <section className="px-4 py-8">
