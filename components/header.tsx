@@ -9,7 +9,7 @@ interface HeaderProps {
   onShowToast: (message: string) => void
 }
 
-const X_PROFILE_URL = "https://x.com/yourhandle"
+const X_PROFILE_URL = "https://x.com/i/communities/1965539767363477995"
 const PUMPFUN_URL = "https://pump.fun/CA/GCDimgyzxHgEYgnNW5eaW1DnKSyjf5Ax7YCiiCTWpump"
 
 export default function Header({ theme, onToggleTheme, onShowToast }: HeaderProps) {
