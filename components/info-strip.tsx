@@ -2,16 +2,97 @@
 
 import { useState, useEffect } from "react"
 import { Circle, Users, Settings, Volume2, Maximize } from "lucide-react"
+import { createClient } from "@/lib/supabase/client"
 
 export default function InfoStrip() {
-  const [viewers, setViewers] = useState(532)
+  const [viewers, setViewers] = useState(0)
   const [time, setTime] = useState("00:00:00")
+  const [sessionId] = useState(() => `viewer_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`)
 
   useEffect(() => {
-    // Animate viewer count
-    const interval = setInterval(() => {
-      setViewers((prev) => prev + Math.floor(Math.random() * 3))
-    }, 5000)
+    const supabase = createClient()
+
+    const setupPresence = async () => {
+      try {
+        // Add this viewer to presence table
+        await supabase.from("viewer_presence").upsert({
+          session_id: sessionId,
+          last_seen: new Date().toISOString(),
+        })
+
+        // Get initial viewer count
+        const { count } = await supabase
+          .from("viewer_presence")
+          .select("*", { count: "exact", head: true })
+          .gte("last_seen", new Date(Date.now() - 30000).toISOString()) // Active in last 30 seconds
+
+        if (count !== null) {
+          setViewers(count)
+        }
+
+        // Subscribe to real-time changes
+        const channel = supabase
+          .channel("viewer_presence_changes")
+          .on(
+            "postgres_changes",
+            {
+              event: "*",
+              schema: "public",
+              table: "viewer_presence",
+            },
+            async () => {
+              // Recount viewers when presence changes
+              const { count: newCount } = await supabase
+                .from("viewer_presence")
+                .select("*", { count: "exact", head: true })
+                .gte("last_seen", new Date(Date.now() - 30000).toISOString())
+
+              if (newCount !== null) {
+                setViewers(newCount)
+              }
+            },
+          )
+          .subscribe()
+
+        // Update presence every 15 seconds to show this viewer is still active
+        const presenceInterval = setInterval(async () => {
+          await supabase.from("viewer_presence").upsert({
+            session_id: sessionId,
+            last_seen: new Date().toISOString(),
+          })
+        }, 15000)
+
+        // Clean up old presence records every minute
+        const cleanupInterval = setInterval(async () => {
+          await supabase
+            .from("viewer_presence")
+            .delete()
+            .lt("last_seen", new Date(Date.now() - 60000).toISOString()) // Remove records older than 1 minute
+        }, 60000)
+
+        // Remove this viewer when they leave
+        const handleBeforeUnload = async () => {
+          await supabase.from("viewer_presence").delete().eq("session_id", sessionId)
+        }
+
+        window.addEventListener("beforeunload", handleBeforeUnload)
+
+        return () => {
+          clearInterval(presenceInterval)
+          clearInterval(cleanupInterval)
+          window.removeEventListener("beforeunload", handleBeforeUnload)
+          supabase.removeChannel(channel)
+          // Remove presence record when component unmounts
+          supabase.from("viewer_presence").delete().eq("session_id", sessionId)
+        }
+      } catch (error) {
+        console.error("[v0] Error setting up viewer presence:", error)
+        // Fallback to starting count if Supabase fails
+        setViewers(532)
+      }
+    }
+
+    setupPresence()
 
     // Update timer
     const startTime = Date.now()
@@ -28,10 +109,9 @@ export default function InfoStrip() {
     }, 1000)
 
     return () => {
-      clearInterval(interval)
       clearInterval(timerInterval)
     }
-  }, [])
+  }, [sessionId])
 
   return (
     <div className="flex items-center justify-between mt-4 text-sm text-[var(--color-text-muted)]">
@@ -48,8 +128,6 @@ export default function InfoStrip() {
           <Users size={14} />
           <span>{viewers.toLocaleString()}</span>
         </div>
-
-        
       </div>
 
       {/* Right cluster */}
