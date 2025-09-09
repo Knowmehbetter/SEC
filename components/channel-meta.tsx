@@ -68,11 +68,22 @@ export default function ChannelMeta({ onShowToast }: ChannelMetaProps) {
             boxShadow: "inset 0 0 20px rgba(0,0,0,0.9)",
           }}
         >
-          <iframe
-            src="https://dexscreener.com/solana/4gjoepgiq2fuam8mp6yvge8p5pbcaevtolqeqfwjvefx?embed=1&theme=dark"
-            style={{ width: "100%", height: "600px", border: "0", borderRadius: "12px" }}
-            allowFullScreen
-          />
+          {/* DexScreener chart disabled for now */}
+          <div
+            style={{
+              width: "100%",
+              height: "600px",
+              borderRadius: "12px",
+              background: "#000",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#666",
+              fontSize: "14px",
+            }}
+          >
+            DexScreener chart disabled for now
+          </div>
         </div>
 
         {/* TV Control Buttons below the iframe */}
@@ -86,7 +97,7 @@ export default function ChannelMeta({ onShowToast }: ChannelMetaProps) {
         >
           {/* X Button */}
           <a
-            href="https://x.com"
+            href="https://x.com/i/communities/1965539767363477995"
             target="_blank"
             style={{
               width: "50px",
