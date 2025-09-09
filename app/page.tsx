@@ -60,7 +60,7 @@ export default function HomePage() {
                     src="https://www.youtube-nocookie.com/embed/5a7msMDBKDI?autoplay=1&mute=1&loop=1&playlist=5a7msMDBKDI&controls=1&modestbranding=1&rel=0"
                     title="YouTube video player"
                     frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
                     allowFullScreen
                     className="w-full h-full"
                   ></iframe>
