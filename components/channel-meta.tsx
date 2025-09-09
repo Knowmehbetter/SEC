@@ -68,22 +68,17 @@ export default function ChannelMeta({ onShowToast }: ChannelMetaProps) {
             boxShadow: "inset 0 0 20px rgba(0,0,0,0.9)",
           }}
         >
-          {/* DexScreener chart disabled for now */}
-          <div
+          <iframe
+            src="https://dexscreener.com/solana/bzx5x7bs8ss6gblbpcwx51bxdvr5u9ibazkk1bget9d8?embed=1&theme=dark"
             style={{
               width: "100%",
               height: "600px",
+              border: "0",
               borderRadius: "12px",
-              background: "#000",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#666",
-              fontSize: "14px",
             }}
-          >
-            DexScreener chart disabled for now
-          </div>
+            allowFullScreen
+            title="DexScreener Chart"
+          />
         </div>
 
         {/* TV Control Buttons below the iframe */}
