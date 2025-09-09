@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata = {
   title: "Inside The Stream",
   description: "Minimal, immersive live video with in-stream crypto actions",
-    generator: 'v0.app'
+  generator: "v0.app",
 }
 
 export default function RootLayout({
@@ -40,6 +40,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
           rel="stylesheet"
         />
+        <script src="https://www.youtube.com/iframe_api" async></script>
       </head>
       <body className="antialiased">
         {children}
